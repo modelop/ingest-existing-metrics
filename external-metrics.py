@@ -38,17 +38,10 @@ def metrics(data: pd.DataFrame):
 # locally first and ensure the python is behaving correctly before deploying on a ModelOp engine.
 #
 def main():
-	data = '''
-		{ "foo": 2.2,
-		  "bar": 1.3,
-		  "strvalue": "foo",
-		  "objectvalue": {
-		  	"val1": 0.8392,
-		  	"val2": 0.987
-		  }
-		}
-	'''
-	data_dict = json.loads(data)
+	with open("example_model_test_results.json", "r") as f:
+        	contents = f.read()
+    	data_dict = json.loads(contents)
+	
 	df = pd.DataFrame.from_dict([data_dict])
 	print(next(metrics(df)))
 
