@@ -39,9 +39,8 @@ def metrics(data: pd.DataFrame):
 #
 def main():
 	with open("example_model_test_results.json", "r") as f:
-        	contents = f.read()
-    	data_dict = json.loads(contents)
-	
+		contents = f.read()
+	data_dict = json.loads(contents)
 	df = pd.DataFrame.from_dict([data_dict])
 	print(next(metrics(df)))
 
