@@ -3,7 +3,16 @@
         "usage": "INPUT_ASSET",
         "assetRole": "BASELINE_DATA",
         "metaData": {
-            "description": "Externally generated metrics in json format"
+            "description": "Dummy file for the metrics function"
+        }
+    },
+    {
+        "usage": "ADDITIONAL_ASSET",
+        "assetRole": "MODEL_TEST_SOURCE",
+        "name": ".+\\.json",
+        "filename": "example_model_test_results.json",
+        "metaData": {
+            "description": "Full Model Test Result for all charts and graphs"
         }
     }
 ]
