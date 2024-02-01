@@ -1,12 +1,12 @@
-# Externally Generated Metrics Monitor
-This python code provides an example of how you would incorporate externally generated metrics into the ModelOp system.
+# Ingest Existing Metrics
+This python code provides an example of how you would ingest existing model test metrics into the ModelOp system.
 It will read any input asset and echo the first row of information returned from that asset.  So if you, for example,
 stored your metrics in an s3 file generated outside of modelop, you can store it as a simple json record.  This monitor
 will then simply read from that asset and echo the json back out.  That will then be transformed into a model test
 result by the modelop system.
 
 The reason for doing it this way is to allow you to have metrics in SQL, S3 or other secure locations, and allow a
-runtime to be configured with the appropriate credentials.  Then instead of an external entity trying to read those
+runtime to be configured with the appropriate credentials.  Then, instead of an external entity trying to read those
 directly, or hard coding credentials directly into python, the engine can be configured through secret stores with that
 appropriate access, and only the runtime will read those values and echo them into the ModelOp system for transformation
 into a test result.
