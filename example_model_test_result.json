@@ -1,4 +1,4 @@
-{
+[{
   "time_line_graph": {
     "title" : "Example Line Graph - Timeseries Data",
     "x_axis_label": "X Axis",
@@ -1064,4 +1064,4 @@
       "tpr": 1
     }
   ]
-}
+}]
