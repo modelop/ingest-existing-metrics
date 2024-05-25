@@ -3,7 +3,7 @@
         "usage": "INPUT_ASSET",
         "assetRole": "UNKNOWN",
         "metaData": {
-            "description": "Dummy file for the metrics function"
+            "description": "Pre-run metrics for a model in json lines format"
         }
     }
 ]
