@@ -1,6 +1,8 @@
 import json
 import pandas as pd
 import modelop.utils as utils
+import datetime
+import random
 
 logger = utils.configure_logger()
 
@@ -29,7 +31,22 @@ def init(init_param):
 # modelop.metrics
 def metrics(data: pd.DataFrame):
 	logger.info("Running the metrics function")
-	yield data.iloc[0].to_dict()
+	test_result_json = {
+		"firstPredictionDate": str(datetime.date.today() - datetime.timedelta(days=30)),
+		"lastPredictionDate": str(datetime.date.today()),
+		"-performance_over_time": {
+			"title": "Performance Over Time - Sentiment",
+			"x_axis_label": "Day",
+			"y_axis_label": "Metric",
+			"data": {
+				"sentiment_negative_percentage": [[str(datetime.date.today() - datetime.timedelta(days=i)), random.uniform(0, 0.25)] for i in range(30, -1, -1)],
+				"sentiment_positive_percentage": [[str(datetime.date.today() - datetime.timedelta(days=i)), random.uniform(0.75, 1.0)] for i in range(30, -1, -1)],
+				"similarity_median": [[str(datetime.date.today() - datetime.timedelta(days=i)), random.uniform(0.75, 1.0)] for i in range(30, -1, -1)]
+			}
+		}
+	}
+	test_result_json.update(data.iloc[0].to_dict())
+	yield test_result_json
 
 #
 # This main method is utilized to simulate what the engine will do when calling the above metrics function.  It takes
@@ -38,7 +55,7 @@ def metrics(data: pd.DataFrame):
 # locally first and ensure the python is behaving correctly before deploying on a ModelOp engine.
 #
 def main():
-	with open("example_model_test_results.json", "r") as f:
+	with open("example_model_test_result.json", "r") as f:
 		contents = f.read()
 	data_dict = json.loads(contents)
 	df = pd.DataFrame.from_dict([data_dict])
