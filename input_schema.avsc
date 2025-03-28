@@ -6,7 +6,7 @@
          "name": "VALUE1",
          "type": "int",
          "dataClass": "numerical",
-         "role": "predictor",
+         "role": "identifier",
          "protectedClass": false,
          "driftCandidate": true,
          "specialValues": [],
